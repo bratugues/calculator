@@ -33,7 +33,20 @@ const appendOperator = (op) => {
   }
 }
 const appendNumber = (number) => {
-  displayValue += number
+  if(number === "."){
+    if (operator === null){
+      if (!num1.includes(".")){
+        displayValue += "."
+      }
+    } else {
+      if(!num2.includes(".")){
+        displayValue += "."
+      }
+    }
+  } else {
+    displayValue += number;
+  }
+  
   if (operator === null){
     num1 = displayValue;
   }
@@ -41,6 +54,7 @@ const appendNumber = (number) => {
     let splitted = displayValue.split(`${operator}`);
     num2 = splitted[1];
   }
+
   updateDisplay()
 }
 
