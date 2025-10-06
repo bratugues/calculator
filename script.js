@@ -46,7 +46,7 @@ const appendNumber = (number) => {
   } else {
     displayValue += number;
   }
-  
+
   if (operator === null){
     num1 = displayValue;
   }
@@ -118,12 +118,21 @@ const clear = () => {
   updateDisplay();
 }
 
-
+const del = () => {
+  let lastChar = displayValue.slice(-1);
+  if (displayValue.length <= 1){
+    displayValue = ""
+  } else {
+    displayValue = displayValue.slice(0, -1);
+  }
+  updateDisplay();
+}
 buttons.forEach((button)=>{
   button.addEventListener("click", ()=>{
     if (button.classList.contains("clear")) {clear()};
     if (button.classList.contains("operator")) {appendOperator(button.innerHTML)};
     if (button.classList.contains("number")) {appendNumber(button.innerHTML)};
     if (button.classList.contains("equal")) operate();
+    if (button.classList.contains("del")) del();
   });
 })
