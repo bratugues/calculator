@@ -18,7 +18,12 @@ const appendOperator = (op) => {
   if (operator !== null && num2 !== "") {
     operate();
   }
-  if (
+
+  if (operator !== null && num2 === ""){
+    operator = op;
+    displayValue = num1 + op
+    updateDisplay();
+  } else if (
     displayValue !== "" &&
     !isNaN(displayValue.charAt(displayValue.length - 1))
   ) {
